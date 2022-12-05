@@ -7,11 +7,10 @@ const app = express();
 //MongoConnect
 const { mongoConnect } = require("./Database/mongoDb");
 
-app.use(cors());
-
 //Model
 const Profile = require("./models/profile");
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -48,7 +47,7 @@ app.post("/profile", (req, res) => {
 });
 
 mongoConnect(() => {
-  app.listen(process.env.port || 8080, () => {
+  app.listen(process.env.PORT || 8080, () => {
     console.log("server started listening to port");
   });
 });
